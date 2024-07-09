@@ -22,7 +22,7 @@ const initApp = () => {
       // Servimos el build del Cliente
       app.use( express.static( path.resolve(__dirname, './cliente/dist') ) );
       app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, './cliente/dist', 'index.html'));
+        res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'));
       });
 
       //Rutas de publicaciones
