@@ -12,10 +12,9 @@ const initApp = () => {
   pool.connect().then( () => {
       console.log('Connection pool created');
    
-
       console.log(__dirname)
       // CORS
-      app.use(cors());
+     // app.use(cors());
 
       // Lectura y parseo del body
       app.use ( express.json() );
