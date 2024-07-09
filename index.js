@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 
  // Lectura y parseo del body
- app.use ( express.json() );
+ //app.use ( express.json() );
 
  app.get('/', (req, res) => {
   res.send('Hello, World!');
