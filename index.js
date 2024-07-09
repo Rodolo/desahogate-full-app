@@ -20,7 +20,7 @@ const initApp = () => {
       app.use ( express.json() );
 
       // Servimos el build del Cliente
-      app.use( express.static( path.resolve(__dirname, './cliente/dist') ) );
+      app.use( express.static('./cliente/dist'));
       app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'));
       });
