@@ -1,65 +1,79 @@
 const express = require('express');
-const path = require('path');
-const cors = require('cors');
+// const path = require('path');
+// const cors = require('cors');
 require('dotenv').config();
-const { pool } = require('./database/config');
+// const { pool } = require('./database/config');
 const app = express();
 const port = process.env.PORT || 3000; 
 
 
-const initApp = () => {
-//Base de datos
-  pool.connect().then( () => {
-      console.log('Connection pool created');
+
+ // Lectura y parseo del body
+ app.use ( express.json() );
+
+ app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+app.listen(port, (err) => {
+  if(err) console.log(err);
+  console.log(`Example app listening on port ${port}`)
+});
+
+
+// const initApp = () => {
+// //Base de datos
+//   pool.connect().then( () => {
+//       console.log('Connection pool created');
    
-      console.log(__dirname)
-      // CORS
-     // app.use(cors());
+//       console.log(__dirname)
+//       // CORS
+//      app.use(cors());
 
-      // Lectura y parseo del body
-      app.use ( express.json() );
+//       // Lectura y parseo del body
+//       app.use ( express.json() );
 
-      const options = {
-        root: path.join(__dirname)
-    };
+//       const options = {
+//         root: path.join(__dirname)
+//     };
 
-      // Servimos el build del Cliente
-      // app.use( express.static('./cliente/dist'));
-      // app.get('/inicio', (req, res) => {
-      //   res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'), options, (err) => {
-      //     if(err){
-      //       console.log('Error when serving index.html');
-      //       console.log(err);
-      //     }else {
-      //       console.log('Sent:', 'index.html');
-      //   }
-      //   });
-      // });
+//       // Servimos el build del Cliente
+//       app.use( express.static('./cliente/dist'));
+//       app.get('/inicio', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'), options, (err) => {
+//           if(err){
+//             console.log('Error when serving index.html');
+//             console.log(err);
+//           }else {
+//             console.log('Sent:', 'index.html');
+//         }
+//         });
+//       });
 
-      app.get('/', (req, res) => {
-        res.send('Hello, World!');
-      });
+//       app.get('/', (req, res) => {
+//         res.send('Hello, World!');
+//       });
 
-      //Rutas de publicaciones
-      //app.use('/api/publicaciones', require('./routes/publicaciones'));
+//       //Rutas de publicaciones
+//       app.use('/api/publicaciones', require('./routes/publicaciones'));
 
      
 
-      app.listen(port, (err) => {
-        if(err) console.log(err);
-        console.log(`Example app listening on port ${port}`)
-      });
+//       app.listen(port, (err) => {
+//         if(err) console.log(err);
+//         console.log(`Example app listening on port ${port}`)
+//       });
 
-    }).catch(function(err) {
-      console.error('Error creating connection pool', err);
-      console.error('Will run app again...');
-      initApp();
-  });
+//     }).catch(function(err) {
+//       console.error('Error creating connection pool', err);
+//       console.error('Will run app again...');
+//       initApp();
+//   });
 
-}
+// }
 
 
 
-initApp();
+// initApp();
 
 
