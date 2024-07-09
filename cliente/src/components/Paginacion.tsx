@@ -12,9 +12,7 @@ export const Paginacion = () => {
   const dispatch = useDispatch();
   const totalPaginas = totalPublicaciones > elementosPorPagina ? totalPublicaciones / elementosPorPagina : 1;
   const totalPaginasRound = Math.round( totalPaginas ) ;
-  const ultimaPaginaRound = totalPublicaciones !== null ? totalPaginas % 1 != 0 ?  totalPaginasRound + 1 : totalPaginasRound: 1;
-
-  console.log({totalPublicaciones, totalPaginas, totalPaginasRound, paginaActual, ultimaPaginaRound});
+  const ultimaPaginaRound = totalPaginasRound >= totalPaginas ? totalPaginasRound : totalPaginasRound + 1 ;
 
   const handleOnPrimeraPagina = () => {
     dispatch(setPaginaActualInicio());

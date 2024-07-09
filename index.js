@@ -15,7 +15,7 @@ const initApp = () => {
       console.log('Connection pool created');
 
       // CORS
-     app.use(cors());
+      app.use(cors());
 
       // Lectura y parseo del body
       app.use ( express.json() );

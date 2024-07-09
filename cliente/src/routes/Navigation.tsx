@@ -14,14 +14,14 @@ export const Navigation = () => {
                     Tomate
                 </span> */}
                 <span>
-                    <NavLink to={'/inicio'} className={ 'link' }> <img className='logo' title='Quedate a gusto!' src='/assets/logo2.png'/></NavLink>
+                    <NavLink to={'/'} className={ 'link' }> <img className='logo' title='Quedate a gusto!' src='/assets/logo2.png'/></NavLink>
                 </span>
                 {/* <span>Podrido ( Y Frito) </span> */}
             </div>
             <div className='nav-container'>
                 <nav className='nav'>
                      <span>
-                        <NavLink to={'/inicio'} className={ 'link' }> Ultimos salseos </NavLink>
+                        <NavLink to={'/'} className={ 'link' }> Ultimos salseos </NavLink>
                     </span>
                     <span>
                         <NavLink to={'/cotillea'} className={ 'link' }> Cotillea un poco </NavLink>
@@ -37,7 +37,7 @@ export const Navigation = () => {
         </div>
        
         <Routes>
-            <Route path="inicio" element= {<Container children={<Inicio/>}/>} />
+            <Route path="/" element= {<Container children={<Inicio/>}/>} />
             <Route path="cotillea" element= {<Container children={<Cotillea/>}/>}/>
             <Route path="desahogate" element= {<Container children={<Desahogate/>}/>} />
             <Route path="*" element= {<Navigate to="/inicio" replace />}/>
