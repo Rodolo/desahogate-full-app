@@ -24,20 +24,24 @@ const initApp = () => {
     };
 
       // Servimos el build del Cliente
-      app.use( express.static('./cliente/dist'));
-      app.get('/inicio', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'), options, (err) => {
-          if(err){
-            console.log('Error when serving index.html');
-            console.log(err);
-          }else {
-            console.log('Sent:', 'index.html');
-        }
-        });
+      // app.use( express.static('./cliente/dist'));
+      // app.get('/inicio', (req, res) => {
+      //   res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'), options, (err) => {
+      //     if(err){
+      //       console.log('Error when serving index.html');
+      //       console.log(err);
+      //     }else {
+      //       console.log('Sent:', 'index.html');
+      //   }
+      //   });
+      // });
+
+      app.get('/', (req, res) => {
+        res.send('Hello, World!');
       });
 
       //Rutas de publicaciones
-      app.use('/api/publicaciones', require('./routes/publicaciones'));
+      //app.use('/api/publicaciones', require('./routes/publicaciones'));
 
      
 
