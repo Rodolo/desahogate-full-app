@@ -21,8 +21,13 @@ const initApp = () => {
 
       // Servimos el build del Cliente
       app.use( express.static('./cliente/dist'));
-      app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'));
+      app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname, './cliente/dist', 'index.html'), (err) => {
+          if(err){
+            console.log('Error when serving index.html');
+            console.log(err);
+          }
+        });
       });
 
       //Rutas de publicaciones
