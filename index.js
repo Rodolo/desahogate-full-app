@@ -20,10 +20,14 @@ const initApp = () => {
       // Lectura y parseo del body
       app.use ( express.json() );
 
+      const options = {
+        root: path.join(__dirname)
+    };
+
       // Servimos el build del Cliente
       app.use( express.static('./cliente/dist'));
-      app.get('/', (req, res) => {
-        res.sendFile('C:\\home\\site\\wwwroot\\cliente\\dist\\index.html', (err) => {
+      app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'cliente', 'dist', 'index.html'), options, (err) => {
           if(err){
             console.log('Error when serving index.html');
             console.log(err);
