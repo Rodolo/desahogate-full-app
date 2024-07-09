@@ -10,7 +10,6 @@ const port = process.env.PORT || 3000;
 const initApp = () => {
 //Base de datos
   pool.connect().then( () => {
-      console.log('Prueba de jon')
       console.log('Connection pool created');
    
 
@@ -24,7 +23,7 @@ const initApp = () => {
       // Servimos el build del Cliente
       app.use( express.static('./cliente/dist'));
       app.get('/', (req, res) => {
-        res.sendFile(path.resolve(__dirname, './cliente/dist', 'index.html'), {root: '/'}, (err) => {
+        res.sendFile('C:\\home\\site\\wwwroot\\cliente\\dist\\index.html', (err) => {
           if(err){
             console.log('Error when serving index.html');
             console.log(err);
