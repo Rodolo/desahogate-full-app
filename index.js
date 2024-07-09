@@ -21,7 +21,7 @@ const initApp = () => {
 
       // Servimos el build del Cliente
       app.use( express.static( path.resolve(__dirname, './cliente/dist') ) );
-      app.get('/inicio', (req, res) => {
+      app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, './cliente/dist', 'index.html'));
       });
 
