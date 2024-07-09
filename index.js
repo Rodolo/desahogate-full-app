@@ -10,7 +10,9 @@ const port = process.env.PORT || 3000;
 const initApp = () => {
 //Base de datos
   pool.connect().then( () => {
+      console.log('Prueba de jon')
       console.log('Connection pool created');
+   
 
       console.log(__dirname)
       // CORS
