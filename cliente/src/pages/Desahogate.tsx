@@ -15,7 +15,7 @@ export const Desahogate = () => {
         if( destinatario !== '' && mensaje != ''){
             const response = await guardarPublicacionDB({destinatario, mensaje});  
             console.log(response); 
-            navigate('/inicio');
+            navigate('/');
         }
   }
 
