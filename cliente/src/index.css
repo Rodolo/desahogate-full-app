@@ -313,6 +313,13 @@
 
 @media (max-width: 500px) {
 
+  .carta-container {
+    max-width: 100%;
+  }
+
+  .carta {
+    max-width: 75%;
+  }
 
   .paginacion-boton{
     margin-top: 1rem;
