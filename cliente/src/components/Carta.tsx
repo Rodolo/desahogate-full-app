@@ -1,9 +1,10 @@
-import { DestinatarioMensajeProps } from "../interfaces/interfaces"
+import { PublicacionProps } from "../interfaces/interfaces"
 
-export const Carta =  ({ destinatario, mensaje } : DestinatarioMensajeProps) => {
+export const Carta =  ({ destinatario, mensaje, fecha_creacion } : PublicacionProps) => {
+
   return (
-    <div className='carta'>
-      <span> Querid@ {destinatario}: </span>
+    <div className='carta' title={`Publicado el ${fecha_creacion}`}>
+      <span> Querid@ {destinatario}: </span> 
       <p> {mensaje} </p>
     </div>
   )

@@ -36,9 +36,9 @@ export const Cotillea = () => {
 
 
   return (
-  <div>
-        <div>
-          <form className="form-busqueda form" onSubmit={customHandleOnSubmit} noValidate>
+  <>
+     
+          <form className="form-busqueda" onSubmit={customHandleOnSubmit} noValidate>
             <div className="flex-column">
               <label htmlFor="destinatario"> Quiero salseo sobre...</label>
               <input className="form-control busqueda" type="text" name="destinatario" value={destinatario} onChange={customHandleOnChange}/>
@@ -49,24 +49,28 @@ export const Cotillea = () => {
             </div>
           </form>
        
-        </div>
         { 
            (formEnviado && destinatario) &&                        
                 <> 
+
+                    <div className='carta-container'> 
                   {
-                    publicaciones.length == 0 && 
-                    <div className='carta-container'> <h3> Nadie ha rajado sobre esta persona... :(</h3> </div>
+                    publicaciones.length == 0 &&  <h3> Nadie ha rajado sobre esta persona... :(</h3> 
                   }
-                  {
+                 
+                
+                  {  
                     publicaciones.map(row => row.destinatario.toUpperCase() === destinatario.toUpperCase() && 
-                     <div className='carta-container' key={row.id_publicacion}> 
-                        <Carta key={row.id_publicacion} destinatario={row.destinatario} mensaje={row.mensaje}/>
-                     </div>)
-                  }        
+                   
+                        <Carta key={row.id_publicacion} destinatario={row.destinatario} mensaje={row.mensaje} fecha_creacion={row.fecha_creacion}/>
+                    )
+                  } 
+                    </div>
+                        
                     <Paginacion/>                    
                 </>
         }
-  </div>
+  </>
 
   )
 }

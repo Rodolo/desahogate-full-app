@@ -31,7 +31,7 @@ export const Inicio = () => {
             publicaciones.length === 0 && <h4>Cargando...</h4>
           }
           {
-            publicaciones.map(row => <Carta key={row.id_publicacion} destinatario={row.destinatario} mensaje={row.mensaje}/>)
+            publicaciones.map(row => <Carta key={row.id_publicacion} destinatario={row.destinatario} mensaje={row.mensaje} fecha_creacion={row.fecha_creacion}/>)
           }
 
         </div>

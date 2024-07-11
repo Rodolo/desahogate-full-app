@@ -7,14 +7,14 @@ const getTotalPublicaciones = () => {
 
 const getPublicacionesQuery = ({pagina}) => {
     return `WITH tmp AS (
-                SELECT id_publicacion, destinatario, mensaje, fecha_creacion, rownum = ROW_NUMBER() OVER ( order by fecha_creacion DESC ) FROM publicaciones
+                SELECT id_publicacion, destinatario, mensaje, CAST(fecha_creacion as char) as fecha_creacion, rownum = ROW_NUMBER() OVER ( order by fecha_creacion DESC ) FROM publicaciones
                 )
             SELECT * FROM tmp WHERE rownum  > ${(pagina - 1) * elementosPorPagina} AND rownum <= ${(pagina) * elementosPorPagina};`
 }
 
 const getPublicacionByDestinatarioQuery = ({destinatario, pagina}) => {
     return `WITH tmp AS (
-        SELECT id_publicacion, destinatario, mensaje, fecha_creacion, rownum = ROW_NUMBER() OVER ( order by fecha_creacion DESC ) FROM publicaciones WHERE upper(destinatario) = upper('${destinatario}')
+        SELECT id_publicacion, destinatario, mensaje, CAST(fecha_creacion as char) as fecha_creacion, rownum = ROW_NUMBER() OVER ( order by fecha_creacion DESC ) FROM publicaciones WHERE upper(destinatario) = upper('${destinatario}')
         )
     SELECT * FROM tmp WHERE rownum  >= ${(pagina - 1) * elementosPorPagina} AND rownum < ${(pagina) * elementosPorPagina};`
 }

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import desahogateApi from '../api/api.ts'
 import { setPaginaActualInicio, setPublicaciones, setTotalPublicaciones } from '../slice/publicacionesSlice.ts';
 import { IRootState } from '../store/store.ts';
-import { DestinatarioMensajeProps, DestinatarioProps } from '../interfaces/interfaces.ts';
+import { PublicacionProps, DestinatarioProps } from '../interfaces/interfaces.ts';
 
 
 export const usePublicaciones = () => {
@@ -18,7 +18,6 @@ export const usePublicaciones = () => {
         try {
             const { data } = await desahogateApi.get(`/publicaciones/pag/${paginaActual}`, );
             dispatch(setPublicaciones(data));
-            console.log(data);
             return data;
         } catch (error) {
             console.log(error);
@@ -30,7 +29,6 @@ export const usePublicaciones = () => {
         try {
             const { data } = await desahogateApi.get(`/publicaciones/nombre/${destinatario}/pag/${paginaActual}`);
             dispatch(setPublicaciones(data));
-            console.log(data);
             return data;
         } catch (error) {
             console.log(error);
@@ -41,7 +39,6 @@ export const usePublicaciones = () => {
     const getTotalElementosDB = async() => {
         try {
             const { data } = await desahogateApi.get(`/publicaciones/total/`, );
-            console.log(data)
             dispatch(setTotalPublicaciones(data));
             return data;
         } catch (error) {
@@ -54,7 +51,6 @@ export const usePublicaciones = () => {
         try {
             const { data } = await desahogateApi.get(`/publicaciones/nombre/${destinatario}/total/`);
             dispatch(setTotalPublicaciones(data));
-            console.log(data);
             return data;
         } catch (error) {
             console.log(error);
@@ -62,10 +58,9 @@ export const usePublicaciones = () => {
         }
     }
 
-    const guardarPublicacionDB = async({destinatario, mensaje}: DestinatarioMensajeProps) => {
+    const guardarPublicacionDB = async({destinatario, mensaje}: PublicacionProps) => {
         try {
             const response = await desahogateApi.post("/publicaciones", {destinatario, mensaje});
-            console.log(response);
             return response;
         } catch (error) {
             console.log(error);
